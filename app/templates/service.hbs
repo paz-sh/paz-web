@@ -1,0 +1,58 @@
+{{#link-to 'services'}}← Back to list{{/link-to}}
+
+<div class="cards">
+  <div class="card">
+    <div class="card__header">
+        <h2 class="card__header-title">
+            {{id}}
+            <div style="float: right;">
+                <button class="btn btn--sad" {{action 'destroy' this}}>
+                <i class="ss-delete btn__icon"></i>
+              </button>
+            </div>
+        </h2>
+    </div>
+    <div class="card__body">
+      <p>{{description}}</p>
+      <p><a {{bind-attr href=dockerLink}}>{{dockerRepository}}</a></p>
+      <div class="halves">
+        <div class="half config">
+          <h3 class="config__title">Last Config</h3>
+          {{#if configLast}}
+          {{service-config config=configLast}}
+          {{else}}
+          <p>Service hasn't been deployed yet.</p>
+          {{/if}}
+        </div>
+
+        <div class="half config">
+          <h3 class="config__title">
+              Next Config
+              {{#unless configNext.isEditing}}
+              <button class='btn btn--sm' {{action 'edit' this 'configNext'}}>
+                <i class="ss-write btn__icon"></i>
+              </button>
+              {{/unless}}
+          </h3>
+          {{#if configNext.isEditing}}
+            {{#form-for configNext classNames='config__form'}}
+              {{input publicFacing label="Public Facing?" as="checkbox"}}
+              {{input numInstances label="Instances"}}
+              <button class='btn btn--primary btn--sm' {{action 'save' this 'configNext'}}>
+                <span class="glyphicon glyphicon-pencil"></span>
+                Save
+              </button>
+              <button class='btn btn--sad btn--sm' {{action 'cancel' this 'configNext'}}>
+                Cancel
+              </button>
+            {{/form-for}}
+          {{else}}
+            {{service-config config=configNext}}
+          {{/if}}
+        </div>
+      </div>
+    </div>
+  </div>
+
+{{outlet}}
+</div>

@@ -1,0 +1,58 @@
+.health__list {
+  cursor: pointer;
+}
+
+.health__list--expanded {
+  cursor: zoom-out;
+}
+
+.health__list--collapsed {
+  cursor: zoom-in;
+}
+
+%health {
+  h5 {
+    display: inline-block;
+  }
+}
+
+.health__title {
+  h5 {
+    display: inline-block;
+  }
+}
+
+.health__title--sad {
+  @extend .health__title;
+  h5 { color: $sad; }
+}
+
+.health__title + .health {
+  margin-top: 1em;
+}
+
+%health::before {
+  content: '';
+  height: em(10);
+  width: em(10);
+  background: $base-font-color;
+  display: inline-block;
+  border-radius: 10px;
+  margin-right: 1em;
+}
+
+.health--happy, .health--sad {
+  @extend %health;
+}
+
+.health--happy::before {
+  background: $happy;
+}
+
+.health--sad::before {
+  background: $sad;
+}
+
+.health__buttons {
+  margin-top: 1em;
+}

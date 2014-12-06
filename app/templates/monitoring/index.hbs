@@ -1,0 +1,24 @@
+<div class="cards--thirds">
+  {{#each}}
+  <div class="card">
+    <div class="card__header">
+      <h3 class="card__header-title">
+        {{#link-to 'monitoring.host' id}}
+        {{PublicIP}}
+        {{/link-to}}
+      </h3>
+    </div>
+    {{#if units}}
+    <div class="card__body">
+      <ul>
+      {{#each units}}
+      {{#link-to 'monitoring.unit' id}}
+      <li {{bind-attr class=':health__title healthy::health__title--sad'}}><h5>{{name}}</h5> <span>v{{version}} #{{instance}}</span></li>
+      {{/link-to}}
+      {{/each}}
+      </ul>
+    </div>
+    {{/if}}
+  </div>
+  {{/each}}
+</div>

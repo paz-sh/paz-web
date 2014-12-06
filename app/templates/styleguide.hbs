@@ -1,0 +1,181 @@
+<div class="sub-nav">
+  <div class="pills">
+    {{#link-to 'styleguide' classNames='pill'}}Styleguide{{/link-to}}
+    {{#link-to 'dashboard' classNames='pill'}}Dashboard{{/link-to}}
+    {{#link-to 'services' classNames='pill'}}Services{{/link-to}}
+    {{#link-to 'load-balancers' classNames='pill'}}Load Balancers{{/link-to}}
+  </div>
+</div>
+
+<div class="cards cards--thirds">
+  <div class="card">
+    <div class="card__header">
+      <h3 class="card__header-title">
+        Card
+      </h3>
+    </div>
+    <div class="card__body">
+      <h5>This is my card</h5>
+      <p>There are many like it, but this one is mine.</p>
+      <p>My card is my best friend. It is my life. I must master it as I must master my life.</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card__header--happy">
+      <h3 class="card__header-title">
+        Happy Card
+      </h3>
+    </div>
+    <div class="card__body">
+      <ul class="health__list">
+        <li class="health--happy"><h5>Service</h5> v1 #1</li>
+      </ul>
+    </div>
+    <div class="card__body">
+      <ul class="health__list">
+        <li class="health--happy"><h5>Service</h5> v1 #1</li>
+      </ul>
+    </div>
+    <div class="card__body">
+      <ul class="health__list">
+        <li class="health--happy"><h5>Service</h5> v1 #1</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card__header--sad">
+      <h3 class="card__header-title">
+        Sad Card
+      </h3>
+    </div>
+    <div class="card__body">
+      <ul class="health__list">
+        <li class="health__title"><h5>Service</h5> v1 #1</li>
+        <li class="health health--happy">loading: loaded</li>
+        <li class="health health--happy">active: active</li>
+        <li class="health health--sad">sub: failed</li>
+        <li class="btn-group health__buttons">
+          <div class="btn"><i class="ss-fork btn__icon"></i></div>
+          <div class="btn"><i class="ss-stopwatch btn__icon"></i></div>
+          <div class="btn"><i class="ss-notebook btn__icon"></i></div>
+        </li>
+      </ul>
+    </div>
+    <div class="card__body">
+      <ul class="health__list">
+        <li class="health--sad"><h5>Service</h5> v1 #1</li>
+      </ul>
+    </div>
+    <div class="card__body">
+      <ul class="health__list">
+        <li class="health--sad"><h5>Service</h5> v1 #1</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card__header">
+      <h3 class="card__header-title">
+        Second row card
+      </h3>
+    </div>
+    <div class="card__body">
+      <p>Look mom, no <code>.row</code> div!</p>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card__header">
+      <h3 class="card__header-title">
+        Card with sections
+      </h3>
+    </div>
+    <div class="card__body"><p>Foo</p></div>
+    <div class="card__body"><p>Bar</p></div>
+    <div class="card__body"><p>Baz</p></div>
+    <div class="card__footer"><p>Qux</p></div>
+  </div>
+
+  <div class="card">
+    <div class="card__header">
+      <h3 class="card__header-title">
+        Card with footer
+      </h3>
+    </div>
+    <div class="card__body">
+      <p>I'm a cool card with a footer!</p>
+    </div>
+    <div class="card__footer">
+      <div class="btn btn--primary btn--full">Footer Button</div>
+    </div>
+  </div>
+
+</div>
+
+<div class="cards cards--one-up">
+  <div class="card">
+    <div class="card__header">
+      <h3 class="card__header-title">
+        A bigger card
+      </h3>
+    </div>
+    <div class="card__body">
+      <h5>This card is bigger.</h5>
+      <p> It doesn't tile, so use it for occasions when you have lots of content.</p>
+
+      <h5>Buttons</h5>
+      <div class="btn">Default Button</div>
+      <div class="btn--primary">Primary Button</div>
+      <div class="btn--happy">Happy Button</div>
+      <div class="btn--sad">Sad Button</div>
+      <div class="btn">
+        <i class="ss-check btn__icon"></i>Button with icon
+      </div>
+      <p>Because <code>inline-block</code> is finicky - make sure the <code>&lt;i&gt;</code> tag is on the same level as the button text - otherwise we get a weird margin bug.</p>
+
+      <h5>Block-level buttons</h5>
+      <div class="btn btn--full">Full-width Button</div>
+      <div class="btn btn--full">
+        <i class="ss-check btn__icon"></i>Full-width Button with icon
+      </div>
+
+      <h5>Button sizes</h5>
+      <div class="btn btn--sm">Small button</div>
+      <div class="btn">Normal button</div>
+      <div class="btn btn--lg">Large button</div>
+
+      <h5>Button groups</h5>
+      <div class="btn-group">
+        <div class="btn btn__icon"><i class="ss-fork"></i></div>
+        <div class="btn btn__icon"><i class="ss-fork"></i></div>
+        <div class="btn btn__icon"><i class="ss-fork"></i></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card__header">
+      <h2 class="card__header-title">Form styling</h2>
+    </div>
+    <div class="card__body">
+      {{#form-for nil}}
+        {{input "Username" placeholder='Paz Peterson'}}
+        {{input Checkbox label="Load Balanced?" as="checkbox"  value=loadBalanced }}
+        {{input Numeric  label="# Instances"    as="number"    value=numInstances placeholder='3'}}
+
+        {{!-- <div id="ember564" class="ember-view string description input fieldWithErrors"><label id="ember590" class="ember-view description" for="ember591">Description</label><input id="ember591" class="ember-view ember-text-field" placeholder="Awesome sauce service." type="text" name="description"></div> --}}
+
+        {{#input error-testing classNames='fieldWithErrors'}}
+          {{label-field error-testing}}
+          {{input-field error-testing value='Invalid'}}
+          <span class="ember-view description error">can't be blank</span>
+        {{/input}}
+
+        {{submit classNames='btn btn--primary'}}
+        <button class="btn">Cancel</button>
+      {{/form-for}}
+    </div>
+  </div>
+</div>

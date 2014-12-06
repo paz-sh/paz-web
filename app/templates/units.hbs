@@ -1,0 +1,54 @@
+<div class="cards--thirds">
+  {{#if this}}
+  {{#each this}}
+  <div class="card">
+    <div {{bind-attr class='computedHealth:card__header--happy:card__header--sad'}} {{action 'expand' this}}>
+    <h4 class='card__header-title'>{{id}}</h4>
+  </div>
+  {{#if this.isExpanded}}
+    {{#if units}}
+      {{#each unit in units}}
+        <div class="card__body">
+          <ul class='health__list' {{bind-attr class=':health__list unit.isExpanded:health__list--expanded:health__list--collapsed'}}>
+            <li {{bind-attr class=':health__title unit.healthy::health__title--sad'}} {{action 'expand' unit}}><h5>{{unit.name}}</h5> <span>v{{unit.version}} #{{unit.instance}}</span></li>
+            {{#if unit.isExpanded}}
+
+            <li {{bind-attr class=':health unit.loadHealthy:health--happy:health--sad'}} {{action 'expand' unit}}>loading: {{unit.loadState}}</li>
+            <li {{bind-attr class=':health unit.activeHealthy:health--happy:health--sad'}} {{action 'expand' unit}}>active: {{unit.activeState}}</li>
+            <li {{bind-attr class=':health unit.subHealthy:health--happy:health--sad'}} {{action 'expand' unit}}>sub: {{unit.subState}}</li>
+
+            <li class="btn-group health__buttons">
+              {{#link-to 'load-balancers' classNames='btn not-implemented' title='Load Balancers'}}
+              <i class="ss-fork btn__icon"></i>
+              {{/link-to}}
+
+              {{#link-to 'monitoring.unit' unit.id classNames='btn' title='Monitoring'}}
+              <i class="ss-stopwatch btn__icon"></i>
+              {{/link-to}}
+
+              {{#link-to 'logs' classNames='btn not-implemented' title='Logs'}}
+              <i class="ss-notebook btn__icon"></i>
+              {{/link-to}}
+            </li>
+            {{/if}}
+          </ul>
+        </div>
+      {{/each}}
+      {{else}}
+        <div class="card__body">
+          <p>No units running.</p>
+        </div>
+      {{/if}}
+      <div class="card__footer">
+        {{#link-to 'load-balancers' classNames='btn btn--primary btn--full not-implemented' title='Load Balancers'}}
+        <i class="ss-fork btn__icon"></i> Load balancers
+        {{/link-to}}
+      </div>
+    </div>
+  </div>
+  {{/if}}
+  {{/each}}
+  {{else}}
+  <h3>No services.</h3>
+  {{/if}}
+</div>

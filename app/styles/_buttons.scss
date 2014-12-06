@@ -1,0 +1,98 @@
+%button {
+  // -webkit-font-smoothing: antialiased;
+  background-color: $base-button-background;
+  border-radius: $border-radius;
+  color: $base-button-color;
+  display: inline-block;
+  font-size: $base-font-size;
+  font-weight: bold;
+  line-height: em(36);
+  padding: 0 1em;
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
+  border: none;
+
+  &:hover {
+    background-color: $hover-button-color;
+    color: $base-button-color;
+  }
+
+  > .btn__icon {
+    display: inline-block;
+    vertical-align: middle;
+    width: em(30);
+    text-align: center;
+  }
+}
+
+.btn {
+  @extend %button;
+}
+
+%btn--light {
+  color: #fff;
+
+  &:hover {
+    color: #fff;
+  }
+}
+
+.btn--full {
+  display: block;
+  width: 100%;
+}
+
+.btn--sm {
+  line-height: em(24);
+}
+
+.btn--lg {
+  line-height: em(48);
+  padding-left: 2em;
+  padding-right: 2em;
+}
+
+.btn--primary {
+  @extend .btn;
+  @extend %btn--light;
+  @include primaryGradient;
+  &:hover {
+    background: darken($primary, 10%);
+  }
+}
+
+.btn--happy {
+  @extend .btn;
+  @extend %btn--light;
+  @include happyGradient;
+  &:hover {
+    background: darken($happy, 10%);
+  }
+}
+
+.btn--sad {
+  @extend .btn;
+  @extend %btn--light;
+  @include sadGradient;
+  &:hover {
+    background: darken($sad, 10%);
+  }
+}
+
+.btn-group {
+  @include display(flex);
+
+  > .btn {
+    border-radius: 0;
+    @include flex(1);
+
+    &:first-child {
+      border-radius: $border-radius 0 0 $border-radius;
+    }
+
+    &:last-child {
+      border-radius: 0 $border-radius $border-radius 0;
+    }
+  }
+}

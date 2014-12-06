@@ -1,0 +1,23 @@
+<div class="sub-nav">
+  {{#link-to 'services.new' classNames="btn btn--primary"}}
+    <i class="ss-write btn__icon"></i>New service{{/link-to}}
+</div>
+
+<div class="cards--one-up">
+{{#each}}
+  <div class='card'>
+    <div class="card__header">
+      <h3 class="card__header-title">
+        {{#link-to 'service' id}}
+        {{id}}
+        {{/link-to}}
+      </h3>
+    </div>
+    {{#link-to 'service' id}}
+    <div class="card__body">
+        <p>{{description}}</p>
+    </div>
+    {{/link-to}}
+  </div>
+{{/each}}
+</div>

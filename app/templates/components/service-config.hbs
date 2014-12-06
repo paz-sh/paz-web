@@ -1,0 +1,14 @@
+<ul>
+  <li><b>Public Facing</b>: {{config.publicFacing}}</li>
+  <li>Instances: {{config.numInstances}}</li>
+  <li>Environment: </li>
+  {{#each keys}}
+  <li>{{key}} : {{value}}</li>
+  {{/each}}
+  <li>Ports: </li>
+  {{#each config.ports}}
+  <li>{{container}} : {{host}}</li>
+  {{/each}}
+</ul>
+
+{{yield}}

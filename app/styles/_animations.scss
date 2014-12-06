@@ -1,0 +1,11 @@
+@include keyframes(fadeIn) {
+  from {
+    @include transform(scale(1.05));
+    opacity: 0.4;
+  }
+
+  to {
+    @include transform(scale(1));
+    opacity: 1;
+  }
+}

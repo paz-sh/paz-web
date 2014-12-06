@@ -1,0 +1,40 @@
+.nav {
+
+}
+
+.nav__logo {
+  display: block;
+  height: em(120);
+  background: url('images/logo.svg') center no-repeat;
+  text-indent: -9999px;
+}
+
+.nav__item {
+  display: block;
+  line-height: em(80);
+  font-size: em(16);
+  font-weight: bold;
+  color: $base-font-color;
+  &:hover {
+
+  }
+  &.active {
+    background: #fff;
+    color: $header-font-color;
+  }
+}
+
+.nav__icon {
+  width: em(60, 16);
+  text-align: center;
+  display: inline-block;
+  // font-size: em(16);
+  vertical-align: middle;
+}
+
+// subnav
+
+.sub-nav {
+  @include row;
+  margin-bottom: em(24);
+}

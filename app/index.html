@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>PazEmber</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    {{BASE_TAG}}
+
+    <link rel="stylesheet" href="assets/vendor.css">
+    <link rel="stylesheet" href="assets/paz-ember.css">
+  </head>
+  <body>
+    <script src="assets/vendor.js"></script>
+    <script src="assets/paz-ember.js"></script>
+    <script>
+      window.PazEmberENV = require('paz-ember/config/environment')['default'];
+      window.EmberENV = window.PazEmberENV.EmberENV;
+      window.PazEmber = require('paz-ember/app')['default'].create(PazEmberENV.APP);
+    </script>
+  </body>
+</html>

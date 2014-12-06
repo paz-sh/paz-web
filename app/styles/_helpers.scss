@@ -1,0 +1,13 @@
+.not-implemented {
+  cursor: not-allowed;
+}
+
+#cAdvisor {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+iframe::-webkit-scrollbar {
+  display: none;
+}

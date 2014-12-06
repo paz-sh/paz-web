@@ -1,0 +1,60 @@
+$base-background-color: rgb(249, 250, 252);
+$menu: rgb(237, 242, 246);
+$base-font-color: #98B0C3;
+$header-font-color: #5E778B;
+
+$primary: #6B7B9C;
+$happy: #74F2A7;
+$sad: #FF715D;
+
+$base-font-size: 1em;
+$h1-font-size: em(20);
+$h2-font-size: em(16);
+$h3-font-size: em(16);
+$h4-font-size: em(16);
+$h5-font-size: 1em;
+$h6-font-size: 1em;
+
+$base-line-height: 24px;
+$header-line-height: 24px;
+
+$base-border-color: $menu;
+$base-border: 1px solid $base-border-color;
+
+$base-spacing: 1em;
+
+$base-link-color: $header-font-color;
+$hover-link-color: darken($header-font-color, 5%);
+
+$base-font-family: 'Range', monospace;
+$header-font-family: $base-font-family;
+
+$border-radius: 3px;
+
+$base-button-color: $header-font-color;
+$base-button-background: $base-background-color;
+$hover-button-color: darken($base-button-background, 5%);
+
+$form-input-background-color: $base-background-color;
+$form-input-background-color-hover: darken($form-input-background-color, 5%);
+$form-input-background-color-focus: darken($form-input-background-color, 5%);
+$form-input-border-color: $form-input-background-color;
+$form-input-border-color-hover: $form-input-background-color-hover;
+$form-input-border-color-focus: $primary;
+$form-input-font-color: $header-font-color;
+$form-font-size: 1em;
+$form-font-family: $base-font-family;
+$form-font-weight: bold;
+$form-field-spacing: $base-line-height;
+
+@mixin primaryGradient {
+  @include linear-gradient(-180deg, $primary 0%, #647495 100%);
+}
+
+@mixin happyGradient {
+  @include linear-gradient(-180deg, $happy 0%, #71EBA1 100%);
+}
+
+@mixin sadGradient {
+  @include linear-gradient(-180deg, $sad 0%, #F56A58 100%);
+}

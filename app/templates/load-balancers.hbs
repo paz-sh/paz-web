@@ -1,0 +1,46 @@
+{{#unless this.length}}
+<h1>No units deployed.</h1>
+{{/unless}}
+{{#each}}
+<div class="cards--one-up">
+  <div class="card">
+    <div class="card__header">
+      <h4 class="card__header-title">
+        Backends for 
+        {{#link-to 'service' id}}
+        {{id}}
+        {{/link-to}}
+      </h4>
+    </div>
+    {{#each backends}}
+    <div class="card__body">
+      <table>
+        <tr style="text-align: left;">
+          <th><h3>{{order}} (v{{version}})</h3></th>
+        </tr>
+      </table>
+    </div>
+    <div class="card__body">
+      <table>
+        <tr style="text-align: left;">
+          <th><h5>Unit</h5></th>
+          <th><h5>Host</h5></th>
+          <th><h5>Sessions</h5></th>
+          <th><h5>Queued</h5></th>
+          <th><h5>Weight</h5></th>
+        </tr>
+        {{#each hosts}}
+        <tr>
+          <td>{{unit}}</td>
+          <td>{{host}}</td>
+          <td>{{service.scur}}</td>
+          <td>{{service.qcur}}</td>
+          <td>{{service.weight}}</td>
+        </tr>
+        {{/each}}
+      </table>
+    </div>
+    {{/each}}
+  </div>
+</div>
+{{/each}}

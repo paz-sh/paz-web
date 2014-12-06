@@ -1,0 +1,120 @@
+// form {}
+
+.input {
+  margin-bottom: $form-field-spacing;
+}
+
+// .input > label {
+//   display: block;
+// }
+
+// .input > input {
+//   display: block;
+// }
+
+fieldset {
+  // background: $form-input-background-color;
+  border-color: $form-input-background-color;
+  margin: 0 0 $base-spacing 0;
+  padding: $base-spacing;
+}
+
+legend {
+  color: $header-font-color;
+  font-weight: bold;
+}
+
+input,
+label,
+select {
+  display: block;
+  font-family: $form-font-family;
+  font-size: $form-font-size;
+}
+
+label {
+  font-weight: bold;
+  color: $header-font-color;
+  margin-bottom: $base-spacing / 4;
+
+  &.required:after {
+    content: "*";
+  }
+
+  abbr {
+    display: none;
+  }
+}
+
+textarea,
+#{$all-text-inputs},
+select[multiple=multiple] {
+  @include box-sizing(border-box);
+  @include transition(border-color);
+  color: $form-input-font-color;
+  background-color: $form-input-background-color;
+  border-radius: $border-radius;
+  border: 1px solid $form-input-border-color;
+  font-family: $form-font-family;
+  font-size: $form-font-size;
+  margin-bottom: $base-spacing / 2;
+  padding: $base-spacing;
+  width: 100%;
+
+  &:hover {
+    background-color: $form-input-background-color-hover;
+    border-color: $form-input-border-color-hover;
+  }
+
+  &:focus {
+    background-color: $form-input-background-color-focus;
+    border-color: $form-input-border-color-focus;
+    outline: none;
+  }
+}
+
+textarea {
+  resize: vertical;
+}
+
+input[type="search"] {
+  @include appearance(none);
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  display: inline;
+  margin-right: $base-spacing / 4;
+}
+
+input[type="file"] {
+  padding-bottom: $base-spacing / 2;
+  width: 100%;
+}
+
+select {
+  margin-bottom: $base-spacing;
+  max-width: 100%;
+  width: auto;
+}
+
+.fieldWithErrors {}
+.fieldWithErrors > label {}
+.fieldWithErrors > input {
+  background-color: lighten($sad, 28%);
+  border-color: lighten($sad, 28%);
+  color: $sad;
+  &:hover {
+    border-color: lighten($sad, 25%);
+    background-color: lighten($sad, 25%);
+  }
+
+  &:focus {
+    border-color: $sad;
+    background-color: lighten($sad, 22%);
+    color: $sad;
+  }
+}
+.fieldWithErrors > .error {
+  color: $sad;
+}

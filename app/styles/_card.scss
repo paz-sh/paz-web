@@ -1,0 +1,108 @@
+%cards {
+  @include row;
+}
+.card {
+  background: #fff;
+  border-radius: $border-radius;
+  border-radius: 3px;
+  box-shadow: 0px 3px 0px 0px rgba(0,0,0,0.05);
+  margin-bottom: em(24);
+  @include animation(fadeIn .2s ease-out);
+}
+
+.card__header {
+  @include primaryGradient;
+  border-radius: $border-radius $border-radius 0 0;
+  padding-left: 2em;
+  padding-right: 2em;
+  &:last-child {
+    border-radius: $border-radius;
+  }
+}
+
+.card__header--happy {
+  @extend .card__header;
+  @include happyGradient;
+  color: #fff;
+  text-align: center;
+}
+
+.card__header--sad {
+  @extend .card__header;
+  @include sadGradient;
+  color: #fff;
+  text-align: center;
+}
+
+.card__header-title {
+  line-height: 60px;
+  color: #fff;
+  a {
+    color: inherit;
+  }
+}
+
+.card__body {
+  padding: 1em 1em;
+  border: $base-border;
+  border-top-width: 0;
+  & + .card__body, & + .card__footer {
+    border-top-width: 0;
+  }
+  &:last-child {
+    border-radius: 0 0 $border-radius $border-radius;
+  }
+}
+
+.card__footer {
+  background: $base-background-color;
+  @extend .card__body;
+  border: $base-border;
+  border-radius: 0 0 $border-radius $border-radius;
+}
+
+.cards {
+  @extend %cards;
+  .card {
+    .halves {
+      @include clearfix;
+    }
+    .half {
+      @include span-columns(3 of 6);
+      @include omega(2n);
+    }
+  }
+}
+
+.cards--thirds {
+  @extend %cards;
+
+  .card {
+    @media screen and (min-width: 600px) and (max-width: 960px) {
+      @include span-columns(3 of 6);
+      @include omega(2n);
+    }
+    @media screen and (min-width: 960px) {
+      @include span-columns(3 of 9);
+      @include omega(3n);
+    }
+  }
+
+  .card__header {
+    text-align: center;
+  }
+}
+
+.cards--one-up {
+  @extend %cards;
+  .card {
+    @media screen and (min-width: 600px) and (max-width: 960px) {
+      @include span-columns(3 of 6);
+      @include omega(2n);
+    }
+    @media screen and (min-width: 960px) {
+      @include span-columns(6 of 9);
+      @include omega(3n);
+    }
+  }
+}

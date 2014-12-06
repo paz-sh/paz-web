@@ -1,0 +1,12 @@
+<div class="card">
+  <div class="card__header">
+    <h4 class="card__header-title">Monitoring for {{id}}</h4>
+  </div>
+  <div class="card__body" style="height: 500px;">
+      {{#if healthy}}
+      <iframe id="cAdvisor" {{bind-attr src=cadvisorGet}}></iframe>
+      {{else}}
+      <h3>Requested unit is down.</h3>
+      {{/if}}
+  </div>
+</div>

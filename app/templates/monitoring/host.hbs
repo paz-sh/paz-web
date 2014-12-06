@@ -1,0 +1,8 @@
+<div class="card">
+  <div class="card__header">
+    <h4 class="card__header-title">Monitoring for {{PublicIP}}</h4>
+  </div>
+  <div class="card__body" style="height: 500px;">
+      <iframe id="cAdvisor" {{bind-attr src=cadvisorGet}}></iframe>
+  </div>
+</div>
