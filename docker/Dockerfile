@@ -4,7 +4,7 @@ MAINTAINER Luke Bond "luke@yld.io"
 RUN npm install -g harp
 
 WORKDIR /usr/src/app
-ADD ./assets /usr/src/app/assets
+ADD ./public/assets /usr/src/app/assets
 ADD ./crossdomain.xml /usr/src/app/crossdomain.xml
 ADD ./index.html /usr/src/app/index.html
 ADD ./200.jade /usr/src/app/200.jade
