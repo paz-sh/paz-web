@@ -17,7 +17,7 @@ var App = Ember.Application.extend({
   Socket: EmberSockets.extend({
     host: PazEmberENV.APP.ORCHESTRATOR_SOCKET.split(':')[0],
     port: Number(PazEmberENV.APP.ORCHESTRATOR_SOCKET.split(':')[1]),
-    controllers: ['services', 'host', 'unit', 'load-balancers'],
+    controllers: ['services', 'host', 'unit'],
     autoConnect: true
   })
 });

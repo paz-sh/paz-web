@@ -5,7 +5,6 @@ var Router = Ember.Router.extend({
 });
 
 Router.map(function() {
-
   this.resource('dashboard', function() {
     this.resource('hosts');
     this.resource('units');
@@ -19,12 +18,10 @@ Router.map(function() {
   });
   this.route('services/new');
 
-  this.resource('load-balancers');
   this.resource('monitoring', function() {
     this.route('host', { path: '/:machine_id' });
     this.route('unit', { path: '/:unit_id' });
   });
-  this.resource('logs');
   this.route('service/edit');
   if (PazEmberENV.environment === 'development') {
     this.route('styleguide');
