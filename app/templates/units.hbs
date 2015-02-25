@@ -18,17 +18,13 @@
             <li {{bind-attr class=':health unit.subHealthy:health--happy:health--sad'}} {{action 'expand' unit}}>sub: {{unit.subState}}</li>
 
             <li class="btn-group health__buttons">
-              {{#link-to 'load-balancers' classNames='btn not-implemented' title='Load Balancers'}}
               <i class="ss-fork btn__icon"></i>
-              {{/link-to}}
 
               {{#link-to 'monitoring.unit' unit.id classNames='btn' title='Monitoring'}}
               <i class="ss-stopwatch btn__icon"></i>
               {{/link-to}}
 
-              {{#link-to 'logs' classNames='btn not-implemented' title='Logs'}}
               <i class="ss-notebook btn__icon"></i>
-              {{/link-to}}
             </li>
             {{/if}}
           </ul>
@@ -40,9 +36,7 @@
         </div>
       {{/if}}
       <div class="card__footer">
-        {{#link-to 'load-balancers' classNames='btn btn--primary btn--full not-implemented' title='Load Balancers'}}
         <i class="ss-fork btn__icon"></i> Load balancers
-        {{/link-to}}
       </div>
     </div>
   </div>
