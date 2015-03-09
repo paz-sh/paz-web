@@ -18,5 +18,9 @@
     "qunit": "~1.17.1",
     "ember-sockets": "~0.6.10",
     "ember-validations": "http://builds.dockyard.com.s3.amazonaws.com/ember-validations/ember-validations-latest.js"
+  },
+  "resolutions": {
+    "ember": "1.10.0",
+    "jquery": ">= 1.7.0 < 2.2.0"
   }
 }
