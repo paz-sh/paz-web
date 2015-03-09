@@ -24,7 +24,7 @@ Router.map(function() {
     this.route('unit', { path: '/:unit_id' });
   });
   this.route('service/edit');
-  if (PazEmberENV.environment === 'development') {
+  if (config.environment === 'development') {
     this.route('styleguide');
   }
 });

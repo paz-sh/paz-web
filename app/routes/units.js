@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import config from '../config/environment';
 
 export default Ember.Route.extend({
   model: function() {
@@ -6,8 +7,8 @@ export default Ember.Route.extend({
 
     return this.store.findAll('service').then(function(services) {
       services.forEach(function(service) {
-        // XXX Very hacky. Would like to fix. 
-        Ember.$.getJSON(PazEmberENV.APP.ORCHESTRATOR_URL + '/services/' + service.get('id') + '/units').then(function(units) {
+        // XXX Very hacky. Would like to fix.
+        Ember.$.getJSON(config.APP.ORCHESTRATOR_URL + '/services/' + service.get('id') + '/units').then(function(units) {
           for (var u = 0; u < units.length; u++) {
             units[u].id = units[u].name;
             units[u].host = units[u].machineState.ID;
