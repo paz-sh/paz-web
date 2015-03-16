@@ -1,14 +1,14 @@
 <div class="cards--thirds">
-{{#each}}
+{{#each host in model}}
   <div class="card">
-    <div {{bind-attr class='computedHealth:card__header--happy:card__header--sad'}} {{action 'expand' this}}>
+    <div {{bind-attr class='host.computedHealth:card__header--happy:card__header--sad'}} {{action 'expand' host}}>
       <h3 class="card__header-title">
-        {{PublicIP}}
+        {{host.PublicIP}}
       </h3>
     </div>
-    {{#if isExpanded}}
-      {{#if units}}
-        {{#each unit in units}}
+    {{#if host.isExpanded}}
+      {{#if host.units}}
+        {{#each unit in host.units}}
           <div class="card__body">
             <ul {{bind-attr class=':health__list unit.isExpanded:health__list--expanded:health__list--collapsed'}}>
               <li {{bind-attr class=':health__title unit.healthy::health__title--sad'}} {{action 'expand' unit}}><h5>{{unit.name}}</h5> <span>v{{unit.version}} #{{unit.instance}}</span></li>
@@ -38,7 +38,7 @@
       {{/if}}
 
       <div class="card__footer">
-        {{#link-to 'monitoring.host' id classNames='btn btn--primary btn--full'}}
+        {{#link-to 'monitoring.host' host.id classNames='btn btn--primary btn--full'}}
           <i class="ss-stopwatch btn__icon"></i>Monitoring
         {{/link-to}}
       </div>
@@ -46,3 +46,4 @@
   </div>
 {{/each}}
 </div>
+

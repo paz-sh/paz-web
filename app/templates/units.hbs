@@ -1,49 +1,48 @@
-{{!-- <div class="cards--thirds">
-  {{#if this}}
-  {{#each this}}
+<div class="cards--thirds">
+{{#each service in model}}
   <div class="card">
-    <div {{bind-attr class='computedHealth:card__header--happy:card__header--sad'}} {{action 'expand' this}}>
-    <h4 class='card__header-title'>{{id}}</h4>
-  </div>
-  {{#if this.isExpanded}}
-    {{#if units}}
-      {{#each unit in units}}
-        <div class="card__body">
-          <ul class='health__list' {{bind-attr class=':health__list unit.isExpanded:health__list--expanded:health__list--collapsed'}}>
-            <li {{bind-attr class=':health__title unit.healthy::health__title--sad'}} {{action 'expand' unit}}><h5>{{unit.name}}</h5> <span>v{{unit.version}} #{{unit.instance}}</span></li>
-            {{#if unit.isExpanded}}
+    <div {{bind-attr class='service.computedHealth:card__header--happy:card__header--sad'}} {{action 'expand' unit}}>
+      <h4 class='card__header-title'>
+        {{unit.id}}
+      </h4>
+    </div>
+    {{#if unit.isExpanded}}
+      {{#if service.units}}
+        {{#each unit in service.units}}
+          <div class="card__body">
+            <ul class='health__list' {{bind-attr class=':health__list unit.isExpanded:health__list--expanded:health__list--collapsed'}}>
+              <li {{bind-attr class=':health__title unit.healthy::health__title--sad'}} {{action 'expand' unit}}><h5>{{unit.name}}</h5> <span>v{{unit.version}} #{{unit.instance}}</span></li>
+              {{#if unit.isExpanded}}
 
-            <li {{bind-attr class=':health unit.loadHealthy:health--happy:health--sad'}} {{action 'expand' unit}}>loading: {{unit.loadState}}</li>
-            <li {{bind-attr class=':health unit.activeHealthy:health--happy:health--sad'}} {{action 'expand' unit}}>active: {{unit.activeState}}</li>
-            <li {{bind-attr class=':health unit.subHealthy:health--happy:health--sad'}} {{action 'expand' unit}}>sub: {{unit.subState}}</li>
+              <li {{bind-attr class=':health unit.loadHealthy:health--happy:health--sad'}} {{action 'expand' unit}}>loading: {{unit.loadState}}</li>
+              <li {{bind-attr class=':health unit.activeHealthy:health--happy:health--sad'}} {{action 'expand' unit}}>active: {{unit.activeState}}</li>
+              <li {{bind-attr class=':health unit.subHealthy:health--happy:health--sad'}} {{action 'expand' unit}}>sub: {{unit.subState}}</li>
 
-            <li class="btn-group health__buttons">
-              <i class="ss-fork btn__icon"></i>
+              <li class="btn-group health__buttons">
+                <i class="ss-fork btn__icon"></i>
 
-              {{#link-to 'monitoring.unit' unit.id classNames='btn' title='Monitoring'}}
-              <i class="ss-stopwatch btn__icon"></i>
-              {{/link-to}}
+                {{#link-to 'monitoring.unit' unit.id classNames='btn' title='Monitoring'}}
+                <i class="ss-stopwatch btn__icon"></i>
+                {{/link-to}}
 
-              <i class="ss-notebook btn__icon"></i>
-            </li>
-            {{/if}}
-          </ul>
-        </div>
-      {{/each}}
+                <i class="ss-notebook btn__icon"></i>
+              </li>
+              {{/if}}
+            </ul>
+          </div>
+        {{/each}}
       {{else}}
         <div class="card__body">
           <p>No units running.</p>
         </div>
       {{/if}}
+
       <div class="card__footer">
         <i class="ss-fork btn__icon"></i> Load balancers
       </div>
-    </div>
+    {{/if}}
   </div>
-  {{/if}}
-  {{/each}}
-  {{else}}
-  <h3>No services.</h3>
-  {{/if}}
+{{/each}}
 </div>
- --}}
+
+
