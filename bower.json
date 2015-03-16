@@ -2,7 +2,6 @@
   "name": "paz-ember",
   "dependencies": {
     "jquery": "^1.11.1",
-    "ember-easyForm": "http://builds.dockyard.com.s3.amazonaws.com/ember-easyForm/canary/ember-easyForm.js",
     "bourbon": "4.2.1",
     "neat": "~1.7.1",
     "normalize-scss": "~3.0.1",

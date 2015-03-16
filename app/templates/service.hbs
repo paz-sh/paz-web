@@ -35,9 +35,9 @@
               {{/unless}}
           </h3>
           {{#if configNext.isEditing}}
-            {{#form-for configNext classNames='config__form'}}
-              {{input publicFacing label="Public Facing?" as="checkbox"}}
-              {{input numInstances label="Instances"}}
+            {{#form-wrapper classNames='config__form'}}
+              {{input configNext.publicFacing label="Public Facing?" as="checkbox"}}
+              {{input configNext.numInstances label="Instances"}}
               <button class='btn btn--primary btn--sm' {{action 'save' this 'configNext'}}>
                 <span class="glyphicon glyphicon-pencil"></span>
                 Save
@@ -45,7 +45,7 @@
               <button class='btn btn--sad btn--sm' {{action 'cancel' this 'configNext'}}>
                 Cancel
               </button>
-            {{/form-for}}
+            {{/form-wrapper}}
           {{else}}
             {{service-config config=configNext}}
           {{/if}}
