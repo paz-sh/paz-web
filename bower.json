@@ -3,8 +3,8 @@
   "dependencies": {
     "jquery": "^1.11.1",
     "ember-easyForm": "http://builds.dockyard.com.s3.amazonaws.com/ember-easyForm/canary/ember-easyForm.js",
-    "bourbon": "~3.2.3",
-    "neat": "~1.5.1",
+    "bourbon": "4.2.1",
+    "neat": "~1.7.1",
     "normalize-scss": "~3.0.1",
     "ember": "1.10.0",
     "ember-data": "1.0.0-beta.15",
