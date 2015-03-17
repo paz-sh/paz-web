@@ -17,7 +17,7 @@ export default DS.RESTSerializer.extend(DS.EmbeddedRecordsMixin, {
 
   // Custom serialize function for POST data since ember would give other properties in model by default
   serialize: function(post) {
-    var envKeys = post.attr('envKeys') || {};
+    var envKeys = post.attr('envKeys') || [];
 
     var ports = post.attr('ports') || [];
 
