@@ -6,21 +6,21 @@
       <h2 class="card__header-title">New Service</h2>
     </div>
     <div class="card__body">
-      {{#form-for model}}
-        {{input name placeholder='my-service'}}
-        {{input description placeholder='Awesome sauce service.'}}
-        {{input dockerRepository placeholder='node:0.10'}}
+      {{#form-wrapper}}
+        {{input model.name placeholder='my-service'}}
+        {{input model.description placeholder='Awesome sauce service.'}}
+        {{input model.dockerRepository placeholder='node:0.10'}}
 
         <fieldset>
           <legend>Config</legend>
-          {{input numInstances placeholder=1 label='Number of instances'}}
+          {{input model.numInstances placeholder=1 label='Number of instances'}}
         </fieldset>
 
         <div class="halves">
           <div class="half">
             <fieldset>
               <legend>Ports</legend>
-              {{#each port in ports}}
+              {{#each port in model.ports}}
               <div class="halves">
                 <div class="half">{{input port.container placeholder=9000 label="container"}}</div>
                 <div class="half">
@@ -39,7 +39,7 @@
             <fieldset>
               <legend>Environment</legend>
               <div class="halves">
-                {{#each envKey in envKeys}}
+                {{#each envKey in model.envKeys}}
                   <div class="half">{{input envKey.key placeholder="key" label="key"}}</div>
                   <div class="half">
                     {{input envKey.value placeholder="value" label="value"}}
@@ -55,9 +55,9 @@
           </div>
         </div>
 
-        <button type="submit" class="btn--primary btn--lg" style="margin-top: 10px;" {{action 'save' model controller}}>Save {{name}}</button>
+        <button type="submit" class="btn--primary btn--lg" style="margin-top: 10px;" {{action 'save' model controller}}>Save {{model.name}}</button>
         <span id="other-errors" class="error"></span>
-      {{/form-for}}
+      {{/form-wrapper}}
     </div>
   </div>
 </div>

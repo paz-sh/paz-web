@@ -17,29 +17,26 @@ export default DS.RESTSerializer.extend(DS.EmbeddedRecordsMixin, {
 
   // Custom serialize function for POST data since ember would give other properties in model by default
   serialize: function(post) {
-    var envKeys = post.get('envKeys') || {};
+    var envKeys = post.attr('envKeys') || [];
 
-    var ports = post.get('ports') || [];
-
-    for(var i=0; i<ports.length; i++) {
-      ports[i].container = Number(ports[i].container);
-      ports[i].host = Number(ports[i].host);
-    }
-
-    var env = {};
-
-    for (var k=0; k<envKeys.length; k++) {
-      env[envKeys[k].key] = envKeys[k].value;
-    }
+    var ports = post.attr('ports') || [];
 
     var json = {
-      name: post.get('name'),
-      description: post.get('description') || '',
-      dockerRepository: post.get('dockerRepository'),
-      publicFacing: post.get('publicFacing') || false,
-      numInstances: Number(post.get('numInstances')) || 1,
-      ports: ports,
-      env : env
+      name: post.attr('name'),
+      description: post.attr('description') || '',
+      dockerRepository: post.attr('dockerRepository'),
+      publicFacing: post.attr('publicFacing') || false,
+      numInstances: Number(post.attr('numInstances')) || 1,
+      ports: ports.map(function(port) {
+        return {
+          container: Number(port.container),
+          host: Number(port.host)
+        };
+      }),
+      env : envKeys.reduce(function(memo, k) {
+        memo[k.key] = k.value;
+        return memo;
+      }, {})
     };
 
     return json;

@@ -65,7 +65,7 @@ export default Ember.Route.extend({
         if(portsValid && envKeysValid) {
           model.save().then(function() {
             that.transitionTo('service', id).then(function() {
-              that.store.update('service', {id: id, configNext: id});
+              that.store.push('service', {id: id, configNext: id});
             });
           });
         } else if (!portsValid) {

@@ -1,7 +1,8 @@
 import Ember from 'ember';
+import config from './config/environment';
 
 var Router = Ember.Router.extend({
-  location: PazEmberENV.locationType
+  location: config.locationType
 });
 
 Router.map(function() {
@@ -23,7 +24,7 @@ Router.map(function() {
     this.route('unit', { path: '/:unit_id' });
   });
   this.route('service/edit');
-  if (PazEmberENV.environment === 'development') {
+  if (config.environment === 'development') {
     this.route('styleguide');
   }
 });

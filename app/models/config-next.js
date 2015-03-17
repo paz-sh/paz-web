@@ -1,8 +1,7 @@
 import Config from './config';
-import Ember from 'ember';
-import 'bower_components/ember-validations/index';
+import EmberValidations from 'ember-validations';
 
-var ConfigNext = Config.extend(Ember.Validations.Mixin, {
+var ConfigNext = Config.extend(EmberValidations.Mixin, {
   validations: {
     numInstances: {
       format: {

@@ -4,18 +4,18 @@
 </div>
 
 <div class="cards--one-up">
-{{#each}}
+{{#each service in model}}
   <div class='card'>
     <div class="card__header">
       <h3 class="card__header-title">
-        {{#link-to 'service' id}}
-        {{id}}
+        {{#link-to 'service' service.id}}
+        {{service.id}}
         {{/link-to}}
       </h3>
     </div>
-    {{#link-to 'service' id}}
+    {{#link-to 'service' service.id}}
     <div class="card__body">
-        <p>{{description}}</p>
+        <p>{{service.description}}</p>
     </div>
     {{/link-to}}
   </div>

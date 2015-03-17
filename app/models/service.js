@@ -1,8 +1,7 @@
 import DS from 'ember-data';
-import Ember from 'ember';
-import 'bower_components/ember-validations/index';
+import EmberValidations from 'ember-validations';
 
-var Service = DS.Model.extend(Ember.Validations.Mixin, {
+var Service = DS.Model.extend(EmberValidations.Mixin, {
   name: DS.attr('string'),
   description: DS.attr('string'),
   dockerRepository: DS.attr('string'),

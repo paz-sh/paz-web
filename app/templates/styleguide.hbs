@@ -159,7 +159,7 @@
       <h2 class="card__header-title">Form styling</h2>
     </div>
     <div class="card__body">
-      {{#form-for nil}}
+      {{#form-wrapper}}
         {{input "Username" placeholder='Paz Peterson'}}
         {{input Checkbox label="Load Balanced?" as="checkbox"  value=loadBalanced }}
         {{input Numeric  label="# Instances"    as="number"    value=numInstances placeholder='3'}}
@@ -174,7 +174,7 @@
 
         {{submit classNames='btn btn--primary'}}
         <button class="btn">Cancel</button>
-      {{/form-for}}
+      {{/form-wrapper}}
     </div>
   </div>
 </div>
