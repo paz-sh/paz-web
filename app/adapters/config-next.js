@@ -11,7 +11,7 @@ export default Adapter.extend({
         prefix = this.urlPrefix();
 
     if (id && !Ember.isArray(id)) { url.push(id); }
-    url.push('config', 'next'); 
+    url.push('config', 'next');
 
     if (prefix) { url.unshift(prefix); }
 
@@ -25,7 +25,7 @@ export default Adapter.extend({
     var data = {};
     var serializer = store.serializerFor(type.typeKey);
 
-    serializer.serializeIntoHash(data, type, record);
+    serializer.serializeIntoHash(data, type, record._createSnapshot());
 
     var service_name = get(record, 'service_name');
 
