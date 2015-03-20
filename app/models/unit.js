@@ -1,7 +1,7 @@
 import DS from 'ember-data';
 
 var Unit = DS.Model.extend({
-  service: DS.belongsTo('service', {async: false}), 
+  service: DS.belongsTo('service', {async: false}),
   version: DS.attr('string'),
   instance: DS.attr('number'),
   activeState: DS.attr('string'),
@@ -19,6 +19,7 @@ var Unit = DS.Model.extend({
   activeHealthy: function() {
     return (Em.isEqual(this.get('activeState'), 'active') || Em.isEqual(this.get('activeState'), 'activating'));
   }.property('activeState'),
+
   subHealthy: function() {
     return (Em.isEqual(this.get('subState'), 'running') || Em.isEqual(this.get('subState'), 'start-pre'));
   }.property('subState'),
@@ -30,7 +31,7 @@ var Unit = DS.Model.extend({
       return health === true;
     });
   }.property('loadHealthy', 'activeHealthy', 'subHealthy'),
-  
+
   name: function() {
     return this.get('id').split('-').filter(function(part) {
       return isNaN(parseInt(part));

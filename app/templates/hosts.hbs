@@ -11,20 +11,18 @@
         {{#each unit in host.units}}
           <div class="card__body">
             <ul {{bind-attr class=':health__list unit.isExpanded:health__list--expanded:health__list--collapsed'}}>
-              <li {{bind-attr class=':health__title unit.healthy::health__title--sad'}} {{action 'expand' unit}}><h5>{{unit.name}}</h5> <span>v{{unit.version}} #{{unit.instance}}</span></li>
+              <li {{bind-attr class=':health__title unit.healthy::health__title--sad'}} {{action 'expand' unit}}>
+                <h5>{{unit.name}}</h5> <span>v{{unit.version}} #{{unit.instance}}</span>
+              </li>
               {{#if unit.isExpanded}}
 
-              <li {{bind-attr class=':health unit.loadHealthy:health--happy:health--sad'}} {{action 'expand' unit}}>loading: {{unit.loadState}}</li>
-              <li {{bind-attr class=':health unit.activeHealthy:health--happy:health--sad'}} {{action 'expand' unit}}>active: {{unit.activeState}}</li>
-              <li {{bind-attr class=':health unit.subHealthy:health--happy:health--sad'}} {{action 'expand' unit}}>sub: {{unit.subState}}</li>
+                {{#health-state property=unit.loadHealthy}}loading: {{unit.loadState}}{{/health-state}}
 
-              <li class="btn-group health__buttons">
-                {{!-- <i class="ss-fork btn__icon"></i> --}}
-                {{#link-to 'monitoring.unit' unit.id classNames='btn' title='Monitoring'}}
-                  <i class="ss-stopwatch btn__icon"></i>
-                {{/link-to}}
-                {{!-- <i class="ss-notebook btn__icon"></i> --}}
-              </li>
+                {{#health-state property=unit.activeHealthy}}active: {{unit.activeState}}{{/health-state}}
+
+                {{#health-state property=unit.subHealthy}}sub: {{unit.subState}}{{/health-state}}
+
+              {{health-buttons unit=unit}}
               {{/if}}
             </ul>
           </div>
