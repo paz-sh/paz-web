@@ -15,7 +15,7 @@ function validatePorts(ports) {
 
 function validateEnvKeys(envKeys) {
   for(var i=0; i<envKeys.length; i++) {
-    if(!envKeys[i].key.match(/^([a-zA-Z]|\d|\-)+$/)) {
+    if(!envKeys[i].key.match(/^([a-zA-Z]|\d|\-|_)+$/)) {
       return false;
     }
   }
