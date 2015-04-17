@@ -27,25 +27,22 @@
 
         <div class="half config">
           <h3 class="config__title">
-              Next Config
-              {{#unless configNext.isEditing}}
-              <button class='btn btn--sm' {{action 'edit' this 'configNext'}}>
-                <i class="ss-write btn__icon"></i>
-              </button>
-              {{/unless}}
+            Next Config
+            {{#unless configEdit.isEditing}}
+            <button class='btn btn--sm' {{action 'edit' model}}>
+              <i class="ss-write btn__icon"></i>
+            </button>
+            {{/unless}}
           </h3>
-          {{#if configNext.isEditing}}
-            {{#form-wrapper classNames='config__form'}}
-              {{input configNext.publicFacing label="Public Facing?" as="checkbox"}}
-              {{input configNext.numInstances label="Instances"}}
-              <button class='btn btn--primary btn--sm' {{action 'save' this 'configNext'}}>
-                <span class="glyphicon glyphicon-pencil"></span>
-                Save
-              </button>
-              <button class='btn btn--sad btn--sm' {{action 'cancel' this 'configNext'}}>
-                Cancel
-              </button>
-            {{/form-wrapper}}
+          {{#if configEdit.isEditing}}
+            {{service-edit config=configEdit}}
+            <button class='btn btn--primary btn--sm' {{action 'save' model}}>
+              <span class="glyphicon glyphicon-pencil"></span>
+              Save
+            </button>
+            <button class='btn btn--sad btn--sm' {{action 'cancel' model}}>
+              Cancel
+            </button>
           {{else}}
             {{service-config config=configNext}}
           {{/if}}

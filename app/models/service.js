@@ -7,6 +7,7 @@ var Service = DS.Model.extend(EmberValidations.Mixin, {
   dockerRepository: DS.attr('string'),
   configNext: DS.belongsTo('configNext', {async: true}),
   configLast: DS.belongsTo('configLast', {async: true}),
+  configEdit: DS.belongsTo('configEdit', {async: true}),
   isExpanded: true,
   dockerLink: function() {
     var repo = this.get('dockerRepository');
@@ -18,8 +19,7 @@ var Service = DS.Model.extend(EmberValidations.Mixin, {
   publicFacing: DS.attr('boolean'),
   numInstances: DS.attr('number'),
   ports: DS.attr(),
-  envKeys: DS.attr(),
-
+  env: DS.attr(),
   units: DS.hasMany('unit'),
   computedHealth: function() {
     return this.get('units').every(function(u) {

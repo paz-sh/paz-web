@@ -1,27 +1,5 @@
 import Ember from 'ember';
-
-function validatePorts(ports) {
-  for(var p=0; p<ports.length; p++) {
-    if(!ports[p].container.match(/^\d+$/)) {
-      return false;
-    }
-    if(!ports[p].host.match(/^\d+$/)) {
-      return false;
-    }
-  }
-
-  return true;
-}
-
-function validateEnvKeys(envKeys) {
-  for(var i=0; i<envKeys.length; i++) {
-    if(!envKeys[i].key.match(/^([a-zA-Z]|\d|\-|_)+$/)) {
-      return false;
-    }
-  }
-
-  return true;
-}
+import { validatePorts, validateEnvKeys } from 'paz-ember/helpers/validators';
 
 export default Ember.Route.extend({
   model: function() {
@@ -51,15 +29,15 @@ export default Ember.Route.extend({
         // Check ports/env (can't get validator to run on them)
         var ports = model.get('ports'),
             portsValid = true,
-            envKeys = model.get('envKeys'),
+            env = model.get('env'),
             envKeysValid = true;
 
         if(ports) {
           portsValid = validatePorts(ports);
         }
 
-        if(envKeys) {
-          envKeysValid = validateEnvKeys(envKeys);
+        if(env) {
+          envKeysValid = validateEnvKeys(env);
         }
 
         if(portsValid && envKeysValid) {
@@ -76,38 +54,6 @@ export default Ember.Route.extend({
       } else {
         Ember.$('#other-errors').html('Name, Description and Docker Repository are required.');
       }
-    },
-    addPorts: function(model) {
-      if(!model.get('ports')) {
-        model.set('ports', [{
-          container: '',
-          host: ''
-        }]);
-      } else {
-        model.get('ports').pushObject({
-          container: '',
-          host: ''
-        });
-      }
-    },
-    removePort: function(model, port) {
-      model.get('ports').removeObject(port);
-    },
-    addEnvKey: function(model) {
-      if(!model.get('envKeys')) {
-        model.set('envKeys', [{
-          key: '',
-          value: ''
-        }]);
-      } else {
-        model.get('envKeys').pushObject({
-          key: '',
-          value: ''
-        });
-      }
-    },
-    removeEnvKey: function(model, envKey) {
-      model.get('envKeys').removeObject(envKey);
-    },
+    }
   }
 });
