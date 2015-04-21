@@ -7,9 +7,9 @@
     </div>
     <div class="card__body">
       {{#form-wrapper}}
-        {{input model.name placeholder='my-service'}}
-        {{input model.description placeholder='Awesome sauce service.'}}
-        {{input model.dockerRepository placeholder='node:0.10'}}
+        {{input model.name label='Name' placeholder='my-service'}}
+        {{input model.description label='Description' placeholder='Awesome sauce service.'}}
+        {{input model.dockerRepository label='Docker Repository' placeholder='node:0.10'}}
 
         <fieldset>
           <legend>Config</legend>
