@@ -1,11 +1,9 @@
-import DS from 'ember-data';
+import Config from './config';
 
-export default DS.RESTSerializer.extend({
+var ConfigLast = Config.extend({
   normalizePayload: function(payload) {
-    return { configLast: payload.doc };
-  },
-  extractSingle: function(store, primaryType, payload, recordId) {
-    payload.doc.id = recordId;
-    return this._super(store, primaryType, payload, recordId);
+    return { configLast: this.transformEnvObject(payload) };
   }
 });
+
+export default ConfigLast;

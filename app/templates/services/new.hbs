@@ -13,47 +13,8 @@
 
         <fieldset>
           <legend>Config</legend>
-          {{input model.numInstances placeholder=1 label='Number of instances'}}
+          {{service-edit config=model}}
         </fieldset>
-
-        <div class="halves">
-          <div class="half">
-            <fieldset>
-              <legend>Ports</legend>
-              {{#each port in model.ports}}
-              <div class="halves">
-                <div class="half">{{input port.container placeholder=9000 label="container"}}</div>
-                <div class="half">
-                  {{input port.host placeholder=80 label="host"}}
-                  <button class="btn btn--sad" style="float: right;" {{action 'removePort' model port}}>—</button>
-                </div>
-              </div>
-              {{/each}}
-
-              <button class="btn" {{action 'addPorts' model}}>
-                <i class="ss-plus btn__icon"></i> Add another port
-              </button>
-            </fieldset>
-          </div>
-          <div class="half">
-            <fieldset>
-              <legend>Environment</legend>
-              <div class="halves">
-                {{#each envKey in model.envKeys}}
-                  <div class="half">{{input envKey.key placeholder="key" label="key"}}</div>
-                  <div class="half">
-                    {{input envKey.value placeholder="value" label="value"}}
-                    <button class="btn btn--sad" style="float: right;" {{action 'removeEnvKey' model envKey}}>—</button>
-                  </div>
-                {{/each}}
-              </div>
-
-              <button class="btn" {{action 'addEnvKey' model}}>
-                <i class="ss-plus btn__icon"></i> Add another key
-              </button>
-            </fieldset>
-          </div>
-        </div>
 
         <button type="submit" class="btn--primary btn--lg" style="margin-top: 10px;" {{action 'save' model controller}}>Save {{model.name}}</button>
         <span id="other-errors" class="error"></span>

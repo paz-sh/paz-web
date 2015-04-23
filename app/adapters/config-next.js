@@ -27,7 +27,7 @@ export default Adapter.extend({
 
     serializer.serializeIntoHash(data, type, record._createSnapshot());
 
-    var service_name = get(record, 'service_name');
+    var service_name = get(record, 'id');
 
     data.configNext.numInstances = Number(data.configNext.numInstances);
 

@@ -1,15 +1,6 @@
 import Config from './config';
-import EmberValidations from 'ember-validations';
 
-var ConfigNext = Config.extend(EmberValidations.Mixin, {
-  validations: {
-    numInstances: {
-      format: {
-        allowBlank: true,
-        with: /^\d+$/
-      }
-    }
-  }
+var ConfigNext = Config.extend({
 });
 
 export default ConfigNext;

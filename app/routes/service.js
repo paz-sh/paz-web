@@ -1,29 +1,66 @@
 import Ember from 'ember';
+import { validatePorts, validateEnvKeys } from 'paz-ember/helpers/validators';
 
 export default Ember.Route.extend({
   model: function(params) {
     return this.store.find('service', params.service_name);
   },
+  deactivate: function() {
+    var configEdit = this.currentModel.get('configEdit.content');
+    if(configEdit != null) {
+      configEdit.destroyRecord();
+    }
+  },
   actions: {
-    edit: function(model, config) {
-      model.set(config + '.isEditing', true);
+    edit: function(model) {
+      // Copy configNext to configEdit
+      var configCopy = model.get('configNext.content').toJSON();
+      configCopy = JSON.stringify(configCopy);
+      configCopy = JSON.parse(configCopy);
+      configCopy = Ember.Object.create(configCopy);
+      if(model.get('configEdit.content') == null) {
+        model.set('configEdit', this.store.createRecord('configEdit'));
+      }
+      var configEdit = model.get('configEdit');
+      configEdit.content.set('id', model.get('id'));
+      configEdit.content.set('isEditing', true);
+      configEdit.content.setProperties(configCopy);
     },
+    save: function(model) {
+      var configEdit = model.get('configEdit.content');
+      var configNext = model.get('configNext.content');
 
-    save: function(model, config) {
-      // TODO: persist edit
-      model.set(config + '.isEditing', false);
+      if(configEdit.get('isValid')) {
+        // Check ports/env (can't get validator to run on them)
+        var ports = configEdit.get('ports'),
+            portsValid = true,
+            envKeys = configEdit.get('env'),
+            envKeysValid = true;
 
-      // This seems hacky, not sure how I'm *supposed* to do this. 
-      var service_name = model.get('id');
-      config = model.get(config);
+        if(ports) {
+          portsValid = validatePorts(ports);
+        }
 
-      config.content.set('service_name', service_name);
-      config.content.save();
+        if(envKeys) {
+          envKeysValid = validateEnvKeys(envKeys);
+        }
+
+        if(portsValid && envKeysValid) {
+          // Copy configEdit to configNext and save
+          configEdit.set('isEditing', false);
+          configNext.setProperties(configEdit.toJSON());
+          configNext.save();
+        } else if (!portsValid) {
+          Ember.$('#other-errors').html('Ports invalid');
+        } else if (!envKeysValid) {
+          Ember.$('#other-errors').html('Environment keys invalid');
+        }
+      } else {
+        Ember.$('#other-errors').html('Instances invalid');
+      }
     },
-
-    cancel: function(model, config) {
-      // TODO: rollback edit
-      model.set(config + '.isEditing', false);
+    cancel: function(model) {
+      model.set('configEdit.isEditing', false);
     }
   }
 });
