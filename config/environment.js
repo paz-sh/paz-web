@@ -17,7 +17,8 @@ module.exports = function(environment) {
       // Here you can pass flags/options to your application instance
       // when it is created
       ORCHESTRATOR_URL: process.env['PAZ_ORCHESTRATOR_URL'] || 'http://localhost:9000',
-      ORCHESTRATOR_SOCKET: process.env['PAZ_ORCHESTRATOR_SOCKET'] || 'localhost:1337'
+      ORCHESTRATOR_SOCKET: process.env['PAZ_ORCHESTRATOR_SOCKET'] || 'localhost:1337',
+      SCHEDULER_URL: process.env['PAZ_SCHEDULER_URL'] || 'http://localhost:9002'
     }
   };
 

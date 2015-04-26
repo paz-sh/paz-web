@@ -2,5 +2,5 @@ import DS from 'ember-data';
 import config from '../config/environment';
 
 export default DS.RESTAdapter.extend({
-  host: config.APP.ORCHESTRATOR_URL
+  host: config.APP.SCHEDULER_URL,
 });

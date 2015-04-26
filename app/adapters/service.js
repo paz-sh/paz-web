@@ -1,4 +1,4 @@
-import Adapter from './application';
+import Adapter from './orchestrator';
 
 export default Adapter.extend({
   buildURL: function(type, id) {

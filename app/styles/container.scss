@@ -1,0 +1,10 @@
+.deploy-container {
+  @include align-items(center);
+  @include display(flex);
+  @include flex-direction(row);
+  @include justify-content(flex-start);
+
+  @include outer-container;
+  button { @include span-columns(3); }
+  .deploy-message { @include span-columns(6); }
+}

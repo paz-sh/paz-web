@@ -17,7 +17,7 @@ var Host = DS.Model.extend({
       return u.get('healthy');
     });
   }.property('units.@each.healthy'),
-  
+
   cadvisorGet: function() {
     var url = 'http://' + this.get('PublicIP') + ':8080';
     return url;
