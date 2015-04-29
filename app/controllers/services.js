@@ -17,6 +17,9 @@ export default Ember.ArrayController.extend({
       });
     },
     'service.modifyConfig': function(name, config) {
+      var serializer = this.store.serializerFor('configNext');
+      config = serializer.normalizePayload({doc: config}).configNext;
+
       this.store.find('service', name).then(function(model) {
         model.get('configNext').then(function(model) {
           for(var attr in config) {
