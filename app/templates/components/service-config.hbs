@@ -2,13 +2,25 @@
   <li><b>Public Facing</b>: {{config.publicFacing}}</li>
   <li>Instances: {{config.numInstances}}</li>
   <li>Environment: </li>
-  {{#each k in config.env}}
-  <li>{{k.key}} : {{k.value}}</li>
-  {{/each}}
+  <fieldset>
+    {{#if config.env}}
+      {{#each k in config.env}}
+        <li>{{k.key}} : {{k.value}}</li>
+      {{/each}}
+    {{else}}
+      <p>Not set</p>
+    {{/if}}
+  </fieldset>
   <li>Ports: </li>
-  {{#each port in config.ports}}
-  <li>{{port.container}} : {{port.host}}</li>
-  {{/each}}
+  <fieldset>
+    {{#if config.ports}}
+      {{#each port in config.ports}}
+        <li>{{port.container}} : {{port.host}}</li>
+      {{/each}}
+    {{else}}
+      <p>Not set</p>
+    {{/if}}
+  </fieldset>
 </ul>
 
 {{yield}}

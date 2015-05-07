@@ -1,4 +1,4 @@
-import Adapter from './application';
+import Adapter from './orchestrator';
 import Ember from 'ember';
 
 var get = Ember.get;

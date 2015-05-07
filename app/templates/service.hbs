@@ -19,10 +19,15 @@
         <div class="half config">
           <h3 class="config__title">Last Config</h3>
           {{#if configLast}}
-          {{service-config config=configLast}}
+            {{#if configLast.isFulfilled}}
+              {{service-config config=configLast}}
+            {{else}}
+              <p>Service hasn't been deployed yet.</p>
+            {{/if}}
           {{else}}
-          <p>Service hasn't been deployed yet.</p>
+            <p>Service hasn't been deployed yet.</p>
           {{/if}}
+
         </div>
 
         <div class="half config">
@@ -45,6 +50,23 @@
             </button>
           {{else}}
             {{service-config config=configNext}}
+            <div class="deploy-container">
+              <button class="btn btn--primary" {{action 'deploy' model}}>
+                Deploy
+              </button>
+              <div class="deploy-message">
+                {{#if isDeploying}}
+                  {{progress-bar}}
+                {{else}}
+                  {{#if isDeploySuccess}}
+                    <p>deploy successfully</p>
+                  {{/if}}
+                  {{#if isDeployFailed}}
+                    <p>deploy failed</p>
+                  {{/if}}
+                {{/if}}
+              </div>
+            </div>
           {{/if}}
         </div>
       </div>

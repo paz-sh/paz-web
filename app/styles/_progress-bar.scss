@@ -1,0 +1,170 @@
+#followingBallsG {
+  position:relative;
+  width:100px;
+  height:8px;
+}
+
+.followingBallsG {
+  background-color: $primary;
+  position:absolute;
+  top:0;
+  left:0;
+  width:8px;
+  height:8px;
+  -moz-border-radius:6px;
+  -moz-animation-name:bounce_followingBallsG;
+  -moz-animation-duration:2.6s;
+  -moz-animation-iteration-count:infinite;
+  -moz-animation-direction:normal;
+  -webkit-border-radius:6px;
+  -webkit-animation-name:bounce_followingBallsG;
+  -webkit-animation-duration:2.6s;
+  -webkit-animation-iteration-count:infinite;
+  -webkit-animation-direction:normal;
+  -o-border-radius:6px;
+  -o-animation-name:bounce_followingBallsG;
+  -o-animation-duration:2.6s;
+  -o-animation-iteration-count:infinite;
+  -o-animation-direction:normal;
+  -ms-border-radius:6px;
+  -ms-animation-name:bounce_followingBallsG;
+  -ms-animation-duration:2.6s;
+  -ms-animation-iteration-count:infinite;
+  -ms-animation-direction:normal;
+  border-radius:6px;
+  animation-name:bounce_followingBallsG;
+  animation-duration:2.6s;
+  animation-iteration-count:infinite;
+  animation-direction:normal;
+}
+
+#followingBallsG_1 {
+  -moz-animation-delay:0s;
+}
+
+#followingBallsG_1 {
+  -webkit-animation-delay:0s;
+}
+
+#followingBallsG_1 {
+  -o-animation-delay:0s;
+}
+
+#followingBallsG_1 {
+  -ms-animation-delay:0s;
+}
+
+#followingBallsG_1 {
+  animation-delay:0s;
+}
+
+#followingBallsG_2 {
+  -moz-animation-delay:0.26s;
+  -webkit-animation-delay:0.26s;
+  -o-animation-delay:0.26s;
+  -ms-animation-delay:0.26s;
+  animation-delay:0.26s;
+}
+
+#followingBallsG_3 {
+  -moz-animation-delay:0.52s;
+  -webkit-animation-delay:0.52s;
+  -o-animation-delay:0.52s;
+  -ms-animation-delay:0.52s;
+  animation-delay:0.52s;
+}
+
+#followingBallsG_4 {
+  -moz-animation-delay:0.78s;
+  -webkit-animation-delay:0.78s;
+  -o-animation-delay:0.78s;
+  -ms-animation-delay:0.78s;
+  animation-delay:0.78s;
+}
+
+@-moz-keyframes bounce_followingBallsG {
+  0% {
+    left:0px;
+    background-color:$primary;
+  }
+
+  50% {
+    left:139px;
+    background-color:$base-background-color;
+  }
+
+  100% {
+    left:0px;
+    background-color:$primary;
+  }
+
+}
+
+@-webkit-keyframes bounce_followingBallsG {
+  0% {
+    left:0px;
+    background-color:$primary;
+  }
+
+  50% {
+    left:139px;
+    background-color:$base-background-color;
+  }
+
+  100% {
+    left:0px;
+    background-color:$primary;
+  }
+
+}
+
+@-o-keyframes bounce_followingBallsG {
+  0% {
+    left:0px;
+    background-color:$primary;
+  }
+
+  50% {
+    left:139px;
+    background-color:$base-background-color;
+  }
+
+  100% {
+    left:0px;
+    background-color:$primary;
+  }
+}
+
+@-ms-keyframes bounce_followingBallsG {
+  0% {
+    left:0px;
+    background-color:$primary;
+  }
+
+  50% {
+    left:139px;
+    background-color:$base-background-color;
+  }
+
+  100% {
+    left:0px;
+    background-color:$primary;
+  }
+}
+
+@keyframes bounce_followingBallsG {
+  0% {
+    left:0px;
+    background-color:$primary;
+  }
+
+  50% {
+    left:139px;
+    background-color:$base-background-color;
+  }
+
+  100% {
+    left:0px;
+    background-color:$primary;
+  }
+}

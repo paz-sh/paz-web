@@ -8,6 +8,7 @@ var Service = DS.Model.extend(EmberValidations.Mixin, {
   configNext: DS.belongsTo('configNext', {async: true}),
   configLast: DS.belongsTo('configLast', {async: true}),
   configEdit: DS.belongsTo('configEdit', {async: true}),
+  hook: DS.belongsTo('hook', {async: true}),
   isExpanded: true,
   dockerLink: function() {
     var repo = this.get('dockerRepository');
