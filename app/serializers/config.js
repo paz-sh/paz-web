@@ -1,6 +1,9 @@
 import DS from 'ember-data';
 
 var Config = DS.RESTSerializer.extend({
+  normalizePayload: function(payload) {
+    return { config: this.transformEnvObject(payload) };
+  },
   transformEnvObject: function(payload) {
     var envKeys = [];
     var envkeysObject = payload.doc.env;

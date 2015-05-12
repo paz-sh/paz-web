@@ -2,7 +2,7 @@
   "name": "paz-ember",
   "dependencies": {
     "jquery": "^1.11.1",
-    "bourbon": "4.2.1",
+    "bourbon": "4.2.3",
     "neat": "~1.7.1",
     "normalize-scss": "~3.0.1",
     "ember": "1.10.0",
@@ -15,7 +15,9 @@
     "ember-qunit": "0.2.8",
     "ember-qunit-notifications": "0.0.7",
     "qunit": "~1.17.1",
-    "ember-validations": "http://builds.dockyard.com.s3.amazonaws.com/ember-validations/ember-validations-latest.js"
+    "ember-validations": "http://builds.dockyard.com.s3.amazonaws.com/ember-validations/ember-validations-latest.js",
+    "jQuery-Collapse": "~1.1.1",
+    "ember-cli-moment-shim": "~0.2.0"
   },
   "devDependencies": {
     "ember-sockets": "git://github.com/Wildhoney/EmberSockets#5d8d6abbe14bcd2aada5127ee3e94b637a7d44bb"
