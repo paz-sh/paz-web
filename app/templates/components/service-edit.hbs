@@ -16,7 +16,7 @@
             {{input port.container placeholder=9000 label="container"}}
           </div>
           <div class="half">
-            {{input port.host placeholder=80 label="host"}}
+            {{input port.host placeholder=81 pattern="^(?!.*80).*$" oninvalid="setCustomValidity('You cannot use port 80')" label="host"}}
             <button class="btn btn--sad" style="float: right;" {{action 'removePort' config port}}>—</button>
           </div>
         </div>
