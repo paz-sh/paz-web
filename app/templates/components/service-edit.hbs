@@ -45,6 +45,25 @@
           <i class="ss-plus btn__icon"></i> Add another key
         </button>
       </fieldset>
+
+      <fieldset>
+        <legend>Volumes</legend>
+        <div class="halves">
+          {{#each volumeKey in config.volume}}
+            <div class="half">
+              {{input volumeKey.key placeholder="key" label="key"}}
+            </div>
+            <div class="half">
+              {{input volumeKey.value placeholder="value" label="value"}}
+              <button class="btn btn--sad" style="float: right;" {{action 'removeVolumeKey' config volumeKey}}>—</button>
+            </div>
+          {{/each}}
+        </div>
+
+        <button class="btn" {{action 'addVolumeKey' config}}>
+          <i class="ss-plus btn__icon"></i> Add another volume
+        </button>
+      </fieldset>
   </div>
 {{/form-wrapper}}
 <span id="other-errors" class="error"></span>

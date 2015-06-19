@@ -21,4 +21,13 @@ function validateEnvKeys(envKeys) {
   return true;
 }
 
-export { validatePorts, validateEnvKeys };
+function validateVolumeKeys(volumeKeys) {
+  for(var i=0; i<volumeKeys.length; i++) {
+    if(!volumeKeys[i].key.match(/^[/a-zA-Z_]+[/a-zA-Z0-9_]*/)) {
+      return false;
+    }
+  }
+  return true;
+}
+
+export { validatePorts, validateEnvKeys, validateVolumeKeys };

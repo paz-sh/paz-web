@@ -19,6 +19,7 @@ var Config = DS.RESTSerializer.extend({
   },
   serialize: function(post) {
     var envKeys = post.attr('env') || {};
+    var volume = post.attr('volume') || {};
     var ports = post.attr('ports') || [];
     var publicFacing = post.attr('publicFacing') || false;
     var numInstances= post.attr('numInstances') || 1;
@@ -33,6 +34,10 @@ var Config = DS.RESTSerializer.extend({
         };
       }),
       env : envKeys.reduce(function(memo, k) {
+        memo[k.key] = k.value;
+        return memo;
+      }, {}),
+      volume : volume.reduce(function(memo, k) {
         memo[k.key] = k.value;
         return memo;
       }, {})

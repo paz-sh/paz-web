@@ -56,3 +56,26 @@ test('remove env', function() {
   component.send('removeEnvKey', config, env2);
   deepEqual(config.env, [], 'remove env2');
 });
+
+
+test('add volume', function() {
+  var component = this.subject();
+  var volume = {key: '', value: ''};
+  var config = Ember.Object.create({volume:[]});
+
+  component.send('addVolumeKey', config);
+  deepEqual(config.volume, [volume], 'add volume');
+});
+
+test('remove volume', function() {
+  var component = this.subject();
+  var volume1 = {key: '', value: ''};
+  var volume2 = {key: '', value: ''};
+  var config = Ember.Object.create({volume:[volume1, volume2]});
+
+  component.send('removeVolumeKey', config, volume1);
+  deepEqual(config.volume, [volume2], 'remove volume1');
+
+  component.send('removeVolumeKey', config, volume2);
+  deepEqual(config.volume, [], 'remove volume2');
+});

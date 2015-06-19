@@ -1,5 +1,5 @@
 import { test, moduleFor } from 'ember-qunit';
-import { validatePorts, validateEnvKeys } from 'paz-ember/helpers/validators';
+import { validatePorts, validateEnvKeys, validateVolumeKeys } from 'paz-ember/helpers/validators';
 
 test('env validation', function() {
   ok(validateEnvKeys, 'validateEnvKeys exists');
@@ -10,8 +10,17 @@ test('env validation', function() {
   equal(validateEnvKeys(envCreator('1foo', 'bar')), false, 'begin with a number');
 });
 
+test('volume validation', function() {
+  ok(validateVolumeKeys, 'validateVolumeKeys exists');
+  var volumeCreator = function(key, value) {
+    return [{key: key, value: value}];
+  };
+  equal(validateVolumeKeys(volumeCreator('/foo', '/bar')), true, 'valid volume');
+  equal(validateVolumeKeys(volumeCreator('1/foo', '/bar')), false, 'begin with a number');
+});
+
 test('port validation', function() {
-  ok(validatePorts, 'validateEnvKeys exists');
+  ok(validatePorts, 'validatePorts exists');
   var portCreator = function(container, host) {
     return [{container: container, host: host}];
   };

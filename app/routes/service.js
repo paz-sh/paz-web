@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import { validatePorts, validateEnvKeys } from 'paz-ember/helpers/validators';
+import { validatePorts, validateEnvKeys, validateVolumeKeys } from 'paz-ember/helpers/validators';
 
 export default Ember.Route.extend({
   model: function(params) {
@@ -31,11 +31,13 @@ export default Ember.Route.extend({
       var configNext = model.get('configNext.content');
 
       if(configEdit.get('isValid')) {
-        // Check ports/env (can't get validator to run on them)
+        // Check ports/env/volume (can't get validator to run on them)
         var ports = configEdit.get('ports'),
             portsValid = true,
             envKeys = configEdit.get('env'),
-            envKeysValid = true;
+            envKeysValid = true,
+            volume = configEdit.get('volume'),
+            volumeKeysValid = true;
 
         if(ports) {
           portsValid = validatePorts(ports);
@@ -45,7 +47,11 @@ export default Ember.Route.extend({
           envKeysValid = validateEnvKeys(envKeys);
         }
 
-        if(portsValid && envKeysValid) {
+        if(volume) {
+          volumeKeysValid = validateVolumeKeys(volumeKeys);
+        }
+
+        if(portsValid && envKeysValid && volumeKeysValid) {
           // Copy configEdit to configNext and save
           configEdit.set('isEditing', false);
           configNext.setProperties(configEdit.toJSON());
@@ -54,6 +60,8 @@ export default Ember.Route.extend({
           Ember.$('#other-errors').html('Ports invalid');
         } else if (!envKeysValid) {
           Ember.$('#other-errors').html('Environment keys invalid');
+        } else if (!volumeKeysValid) {
+          Ember.$('#other-errors').html('Volumes invalid');
         }
       } else {
         Ember.$('#other-errors').html('Instances invalid');

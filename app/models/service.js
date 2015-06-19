@@ -21,6 +21,7 @@ var Service = DS.Model.extend(EmberValidations.Mixin, {
   numInstances: DS.attr('number'),
   ports: DS.attr(),
   env: DS.attr(),
+  volume: DS.attr(),
   units: DS.hasMany('unit'),
   computedHealth: function() {
     return this.get('units').every(function(u) {
