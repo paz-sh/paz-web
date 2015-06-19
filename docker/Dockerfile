@@ -1,6 +1,7 @@
-FROM node
+FROM quay.io/yldio/paz-base
 MAINTAINER Luke Bond "luke@yld.io"
 
+RUN apk --update add bash perl
 RUN npm install -g harp
 
 WORKDIR /usr/src/app
