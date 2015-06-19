@@ -36,7 +36,7 @@ export default Ember.Route.extend({
             portsValid = true,
             envKeys = configEdit.get('env'),
             envKeysValid = true,
-            volume = configEdit.get('volume'),
+            volumeKeys = configEdit.get('volume'),
             volumeKeysValid = true;
 
         if(ports) {
@@ -47,7 +47,7 @@ export default Ember.Route.extend({
           envKeysValid = validateEnvKeys(envKeys);
         }
 
-        if(volume) {
+        if(volumeKeys) {
           volumeKeysValid = validateVolumeKeys(volumeKeys);
         }
 
