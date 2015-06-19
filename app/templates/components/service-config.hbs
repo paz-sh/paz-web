@@ -11,6 +11,16 @@
       <p>Not set</p>
     {{/if}}
   </fieldset>
+  <li>Volumes: </li>
+  <fieldset>
+    {{#if config.volume}}
+      {{#each k in config.volume}}
+        <li>{{k.key}} : {{k.value}}</li>
+      {{/each}}
+    {{else}}
+      <p>Not set</p>
+    {{/if}}
+  </fieldset>
   <li>Ports: </li>
   <fieldset>
     {{#if config.ports}}

@@ -1,5 +1,5 @@
 import Ember from 'ember';
-import { validatePorts, validateEnvKeys } from 'paz-ember/helpers/validators';
+import { validatePorts, validateEnvKeys, validateVolumeKeys } from 'paz-ember/helpers/validators';
 
 export default Ember.Route.extend({
   model: function() {
@@ -26,11 +26,13 @@ export default Ember.Route.extend({
       var id = model.get('name');
 
       if(model.get('isValid')) {
-        // Check ports/env (can't get validator to run on them)
+        // Check ports/env/volume (can't get validator to run on them)
         var ports = model.get('ports'),
             portsValid = true,
             env = model.get('env'),
-            envKeysValid = true;
+            envKeysValid = true,
+            volume = model.get('volume'),
+            volumeKeysValid = true;
 
         if(ports) {
           portsValid = validatePorts(ports);
@@ -40,7 +42,11 @@ export default Ember.Route.extend({
           envKeysValid = validateEnvKeys(env);
         }
 
-        if(portsValid && envKeysValid) {
+        if(volume) {
+          volumeKeysValid = validateVolumeKeys(volume);
+        }
+
+        if(portsValid && envKeysValid && volumeKeysValid) {
           model.save().then(function() {
             that.transitionTo('service', id).then(function() {
               that.store.push('service', {id: id, configNext: id});
@@ -50,6 +56,8 @@ export default Ember.Route.extend({
           Ember.$('#other-errors').html('Ports invalid');
         } else if (!envKeysValid) {
           Ember.$('#other-errors').html('Environment keys invalid');
+        } else if (!volumeKeysValid) {
+          Ember.$('#other-errors').html('Volumes invalid');
         }
       } else {
         Ember.$('#other-errors').html('Name, Description and Docker Repository are required.');

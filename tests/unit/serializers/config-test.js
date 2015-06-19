@@ -21,3 +21,15 @@ test('transform env object into env array', function() {
   var envArray = [{key: 'foo', value: 'bar'}];
   deepEqual(normalizedPayload.env, envArray, 'transform env object');
 });
+
+test('transform volume object into volume array', function() {
+  var serializer = this.subject();
+  var payload = {
+    doc: {
+      volume: {foo: 'bar'}
+    }
+  };
+  var normalizedPayload = serializer.transformVolumeObject(payload);
+  var volumeArray = [{key: 'foo', value: 'bar'}];
+  deepEqual(normalizedPayload.volume, volumeArray, 'transform volume object');
+});
