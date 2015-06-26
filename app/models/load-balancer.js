@@ -58,7 +58,7 @@ LoadBalancer.reopenClass({
         "hosts": [
         {
           "unit": "api-1.0.1-1",
-          "host": "172.17.8.101",
+          "host": "172.17.9.101",
           "port": "49165",
           "sessions": 5,
           "queuedRequests": 3
@@ -85,7 +85,7 @@ LoadBalancer.reopenClass({
         "hosts": [
         {
           "unit": "api-1.0.2-1",
-          "host": "172.17.8.101",
+          "host": "172.17.9.101",
           "port": "49168",
           "sessions": 3,
           "queuedRequests": 2
