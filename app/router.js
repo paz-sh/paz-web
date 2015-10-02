@@ -23,7 +23,10 @@ Router.map(function() {
     this.route('host', { path: '/:machine_id' });
     this.route('unit', { path: '/:unit_id' });
   });
-  this.route('service/edit');
+
+  this.resource('history', function() {
+  });
+
   if (config.environment === 'development') {
     this.route('styleguide');
   }

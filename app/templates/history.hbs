@@ -1,0 +1,61 @@
+<div class="table-container">
+
+  <div class="table-header-main">
+    <div class="table-row-item">Date</div>
+    <div class="table-row-item">Service Name</div>
+    <div class="table-row-item">Version</div>
+  </div>
+
+  <div id="journal-collapse" data-collapse>
+  {{#each journal in model}}
+    <div>
+      <div class="table-row">
+        <div class="table-row-item"><i class="ss-plus history-icon"></i>{{format-date journal.timestamp}}</div>
+        <div class="table-row-item">{{journal.serviceName}}</div>
+        <div class="table-row-item">{{journal.version}}</div>
+      </div>
+    </div>
+
+    <div>
+      <div class="table-header">
+        <div class="table-row-item-expand">Public Facing</div>
+        <div class="table-row-item-expand">Ports</div>
+        <div class="table-row-item-expand">Env Vars</div>
+        <div class="table-row-item-expand">Num Instances</div>
+      </div>
+
+      <div class="table-row">
+        <div class="table-row-item-expand">{{journal.config.publicFacing}}</div>
+        {{#if journal.config.ports}}
+          <div class="table-row-item-expand">
+          {{#each port in journal.config.ports}}
+              <div class="btn btn--sm">{{port.container}}:{{port.host}}</div>
+          {{/each}}
+          </div>
+        {{else}}
+          <div class="table-row-item-expand">
+            <p>None</p>
+          </div>
+        {{/if}}
+
+        <div class="table-row-item-expand">
+          {{#each env in journal.config.env}}
+            <p>{{env.key}}: {{env.value}}</p>
+          {{/each}}
+        </div>
+        <div class="table-row-item-expand">{{journal.config.numInstances}}</div>
+      </div>
+    </div>
+  {{/each}}
+  </div>
+</div>
+
+<script>
+  $("#journal-collapse").collapse();
+  $("#journal-collapse").bind("opened", function(e, section) {
+    section.$summary.find('i').attr('class', 'history-icon ss-hyphen')
+  });
+  $("#journal-collapse").bind("closed", function(e, section) {
+    section.$summary.find('i').attr('class', 'history-icon ss-plus')
+  });
+</script>

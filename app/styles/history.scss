@@ -1,0 +1,49 @@
+.table-container {
+  @include outer-container;
+  font-family: sans-serif;
+  font-size: .9em;
+  line-height: 40px;
+  background: white;
+  color: $header-font-color;
+}
+
+.table-header-main {
+  background: $primary;
+  color: $base-background-color;
+  font-weight: bold;
+  @include fill-parent();
+  @include row(table);
+}
+
+.table-header {
+  font-weight: bold;
+  font-style: bold;
+  @include fill-parent();
+  @include row(table);
+}
+
+.table-row {
+  @include fill-parent();
+  @include row(table);
+}
+
+.table-row-item {
+  @include span-columns(2);
+  padding: 5px 20px 5px 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+.table-row-item-expand {
+  @include span-columns(2);
+  background: darken(white, 5%);
+  padding: 5px 20px 5px 20px;
+  border-bottom: 1px solid #ddd;
+}
+
+.history-icon {
+  padding-right: 15px;
+}
+
+.table-row i {
+  font-size: 5pt;
+}
